@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0"
+         metadata-complete="false">
+
+    <display-name>Trionda</display-name>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+    </session-config>
+
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.trionda.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- PUBLIC -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- CUSTOMER -->
+    <servlet>
+        <servlet-name>MatchListServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.MatchListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MatchListServlet</servlet-name>
+        <url-pattern>/customer/matches</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MatchDetailServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.MatchDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MatchDetailServlet</servlet-name>
+        <url-pattern>/customer/matches/detail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.BookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/customer/bookings/confirm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BookingHistoryServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.BookingHistoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookingHistoryServlet</servlet-name>
+        <url-pattern>/customer/bookings/history</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BookingCancelServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.BookingCancelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookingCancelServlet</servlet-name>
+        <url-pattern>/customer/bookings/cancel</url-pattern>
+    </servlet-mapping>
+
+    <!-- ADMIN -->
+    <servlet>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.AdminDashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminDashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MatchAdminServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.MatchAdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MatchAdminServlet</servlet-name>
+        <url-pattern>/admin/matches</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminBookingServlet</servlet-name>
+        <servlet-class>com.trionda.servlet.AdminBookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminBookingServlet</servlet-name>
+        <url-pattern>/admin/bookings</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
